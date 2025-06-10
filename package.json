@@ -10,9 +10,8 @@
   },
   "devDependencies": {
     "vite": "^6.3.5",
-    "@vitejs/plugin-vue": "^5.2.4"
-  },
-  "dependencies": {
+    "@vitejs/plugin-vue": "^5.2.4",
     "express": "^4.18.2"
-  }
+  },
+  "dependencies": {}
 }

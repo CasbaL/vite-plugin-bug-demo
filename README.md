@@ -1,9 +1,14 @@
-# Monorepo Vue Projects
+# BUG 复现demo
 
-这是一个包含多个Vue项目的Monorepo仓库。
-
-## 项目结构
-
-```shell
-pnpm setup && pnpm start
+## 快速开始
+```sh
+pnpm run setup
+pnpm run start
 ```
+
+## 静态资源服务
+
+通过 [server.js](file:///home/zhushuaibo/Temp/my-monorepo/server.js) 提供静态资源服务，访问路径如下：
+
+- Remote App: `http://localhost:3000/remote`
+- Host App: `http://localhost:3000/host`
