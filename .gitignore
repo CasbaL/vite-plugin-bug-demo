@@ -1,0 +1,23 @@
+# 通用忽略文件
+node_modules/
+dist/
+pnpm-lock.yaml
+
+# 编辑器和IDE文件
+.vscode/
+.idea/
+*.iml
+
+# 日志文件
+logs/
+*.log
+
+# 个人配置文件
+.env
+.env.*
+
+# macOS特定文件
+.DS_Store
+
+# Windows特定文件
+Thumbs.db
