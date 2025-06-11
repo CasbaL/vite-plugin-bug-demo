@@ -1,0 +1,72 @@
+diff --git a/dist/index.js b/dist/index.js
+index 13056b163a207cfbddea5e397c215c60455a19c7..7cd8e469dbff7aac7c7b065026c99b9377158c8f 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -1167,17 +1167,18 @@ function prodExposePlugin(options) {
+            }
+            const isAbsoluteUrl = (url) => url.startsWith('http') || url.startsWith('//');
+ 
+-           const cleanBaseUrl = trimmer.trailing(baseUrl);
++           const cleanBaseUrl = trimmer.trailing(baseUrl).replace('.', '');
++           const cleanAssetsDir = trimmer.leading(assetsDir);
+            const cleanCssPath = trimmer.leading(cssPath);
+            const cleanCurUrl = trimmer.trailing(curUrl);
+ 
+            if (isAbsoluteUrl(baseUrl)) {
+-             href = [cleanBaseUrl, cleanCssPath].filter(Boolean).join('/');
++             href = [cleanBaseUrl, cleanAssetsDir, cleanCssPath].filter(Boolean).join('/');
+            } else {
+             if (cleanCurUrl.includes(cleanBaseUrl)) {
+-              href = [cleanCurUrl, cleanCssPath].filter(Boolean).join('/');
++              href = [cleanCurUrl, cleanAssetsDir, cleanCssPath].filter(Boolean).join('/');
+             } else {
+-              href = [cleanCurUrl + cleanBaseUrl, cleanCssPath].filter(Boolean).join('/');
++              href = [cleanCurUrl + cleanBaseUrl, cleanAssetsDir, cleanCssPath].filter(Boolean).join('/');
+             }
+            }
+          } else {
+@@ -1251,7 +1252,7 @@ function prodExposePlugin(options) {
+           `'${((_a = viteConfigResolved.config) == null ? void 0 : _a.base) || ""}'`
+         ).replace(
+           "__VITE_ASSETS_DIR_PLACEHOLDER__",
+-          `'${((_c = (_b = viteConfigResolved.config) == null ? void 0 : _b.build) == null ? void 0 : _c.assetsDir) || ""}'`
++          `'${((_c = (_b = viteConfigResolved.config) == null ? void 0 : _b.build) == null ? void 0 : _c.assetsDir) || "assets"}'`
+         );
+         const filepathMap = /* @__PURE__ */ new Map();
+         const getFilename = (name) => path$1.parse(path$1.parse(name).name).name;
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 960932ec6cea3bdb300496b6edec5c907ce679ab..3fcf620249a2b29a951b435985ab3012a5d8b0b3 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -1150,17 +1150,18 @@ function prodExposePlugin(options) {
+            }
+            const isAbsoluteUrl = (url) => url.startsWith('http') || url.startsWith('//');
+ 
+-           const cleanBaseUrl = trimmer.trailing(baseUrl);
++           const cleanBaseUrl = trimmer.trailing(baseUrl).replace('.', '');
++           const cleanAssetsDir = trimmer.leading(assetsDir);
+            const cleanCssPath = trimmer.leading(cssPath);
+            const cleanCurUrl = trimmer.trailing(curUrl);
+ 
+            if (isAbsoluteUrl(baseUrl)) {
+-             href = [cleanBaseUrl, cleanCssPath].filter(Boolean).join('/');
++             href = [cleanBaseUrl, cleanAssetsDir, cleanCssPath].filter(Boolean).join('/');
+            } else {
+             if (cleanCurUrl.includes(cleanBaseUrl)) {
+-              href = [cleanCurUrl, cleanCssPath].filter(Boolean).join('/');
++              href = [cleanCurUrl, cleanAssetsDir, cleanCssPath].filter(Boolean).join('/');
+             } else {
+-              href = [cleanCurUrl + cleanBaseUrl, cleanCssPath].filter(Boolean).join('/');
++              href = [cleanCurUrl + cleanBaseUrl, cleanAssetsDir, cleanCssPath].filter(Boolean).join('/');
+             }
+            }
+          } else {
+@@ -1234,7 +1235,7 @@ function prodExposePlugin(options) {
+           `'${((_a = viteConfigResolved.config) == null ? void 0 : _a.base) || ""}'`
+         ).replace(
+           "__VITE_ASSETS_DIR_PLACEHOLDER__",
+-          `'${((_c = (_b = viteConfigResolved.config) == null ? void 0 : _b.build) == null ? void 0 : _c.assetsDir) || ""}'`
++          `'${((_c = (_b = viteConfigResolved.config) == null ? void 0 : _b.build) == null ? void 0 : _c.assetsDir) || "assets"}'`
+         );
+         const filepathMap = /* @__PURE__ */ new Map();
+         const getFilename = (name) => parse(parse(name).name).name;

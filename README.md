@@ -26,3 +26,7 @@ pnpm run start
   
   js加载正常，css路径依然没有解决掉
   ![alt text](image-2.png)
+
+## 3.修改相应的生成代码解决问题
+
+  ![alt text](image-3.png)

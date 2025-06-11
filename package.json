@@ -9,9 +9,13 @@
     "clear": "pnpm -r run clear && rm -rf node_modules"
   },
   "devDependencies": {
-    "vite": "^6.3.5",
     "@vitejs/plugin-vue": "^5.2.4",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "vite": "^6.3.5"
   },
-  "dependencies": {}
+  "pnpm": {
+    "patchedDependencies": {
+      "@originjs/vite-plugin-federation": "patches/@originjs__vite-plugin-federation.patch"
+    }
+  }
 }
