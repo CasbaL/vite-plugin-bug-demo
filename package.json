@@ -1,5 +1,6 @@
 {
-  "private": true,
+  "name": "vite-plugin-bug-demo",
+  "private": false,
   "scripts": {
     "setup": "pnpm install && pnpm build:all",
     "start": "node server.js",
